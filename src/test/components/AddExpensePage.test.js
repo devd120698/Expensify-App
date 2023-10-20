@@ -5,19 +5,19 @@ import expenses from '../dummy data/expenses'
 
 let addExpense, history, wrapper;
 
-beforeEach(()=>{
+beforeEach(() => {
     addExpense = jest.fn();
-    history = {push:jest.fn()}
-    wrapper = shallow(<AddExpensePage addExpense={addExpense} history={history} />)
-    
+    history = {push: jest.fn()}
+    wrapper = shallow(<AddExpensePage addExpense={addExpense} history={history}/>)
+
 })
 
 
-test('should render add expense page correctly',()=>{
+test('should render add expense page correctly', () => {
     expect(wrapper).toMatchSnapshot();
 })
 
-test('should handle onSubmit',()=>{
+test('should handle onSubmit', () => {
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1])
     expect(history.push).toHaveBeenLastCalledWith('/');
     expect(addExpense).toHaveBeenLastCalledWith(expenses[1])

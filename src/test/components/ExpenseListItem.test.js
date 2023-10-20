@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import expenses from '../dummy data/expenses';
 import ExpenseListItem from '../../components/ExpenseListItem'
 
-test('should render ExpenseListItem with fixture data',()=>{
+test('should render ExpenseListItem with fixture data', () => {
     const wrapper = shallow(<ExpenseListItem {...expenses[0]}/>)
     expect(wrapper).toMatchSnapshot();
 })

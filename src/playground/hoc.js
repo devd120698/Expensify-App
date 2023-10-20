@@ -6,15 +6,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Info = (props)=>(
+const Info = (props) => (
     <div>
         <h1>Info</h1>
-        <p>The Info is {props.info}</p> 
+        <p>The Info is {props.info}</p>
     </div>
 );
 
-const withAdminWarning = (WrappedComponent)=>{
-    return (props)=>(
+const withAdminWarning = (WrappedComponent) => {
+    return (props) => (
         <div>
             {props.isAdmin && <p>This is private info.</p>}
             <WrappedComponent {...props} />
@@ -22,12 +22,12 @@ const withAdminWarning = (WrappedComponent)=>{
     );
 };
 
-const requireAuthentication = (WrappedComponent)=>{
-    return (props)=>(
+const requireAuthentication = (WrappedComponent) => {
+    return (props) => (
         <div>
-            {props.isAuthenticated?
+            {props.isAuthenticated ?
                 <WrappedComponent {...props} />
-                :<p>Please Login</p>
+                : <p>Please Login</p>
             }
         </div>
     );
@@ -36,4 +36,4 @@ const AuthInfo = requireAuthentication(Info);
 const AdminInfo = withAdminWarning(Info);
 
 //ReactDOM.render(<AdminInfo isAdmin={true} info="Details" />, document.getElementById('app'));
-ReactDOM.render(<AuthInfo isAuthenticated={false} info="Details" />, document.getElementById('app'));
+ReactDOM.render(<AuthInfo isAuthenticated={false} info="Details"/>, document.getElementById('app'));

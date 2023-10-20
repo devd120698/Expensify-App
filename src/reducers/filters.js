@@ -4,39 +4,39 @@ import moment from 'moment';
 //====================
 
 const filterReducerDefaultState = {
-    text:'',
-    sortBy:'date',
-    startDate:moment().startOf('month'),
-    endDate:moment().endOf('month')
+    text: '',
+    sortBy: 'date',
+    startDate: moment().startOf('month'),
+    endDate: moment().endOf('month')
 };
 
-const filterReducers = (state=filterReducerDefaultState, action)=>{
-    switch(action.type){
+const filterReducers = (state = filterReducerDefaultState, action) => {
+    switch (action.type) {
         case 'SET_TEXT_FILTER':
             return {
                 ...state,
-                text:action.text
+                text: action.text
             };
         case 'SORT_BY_AMOUNT':
-            return{
+            return {
                 ...state,
-                sortBy:'amount'
+                sortBy: 'amount'
             };
         case 'SORT_BY_DATE':
-            return{
+            return {
                 ...state,
-                sortBy:'date'
+                sortBy: 'date'
             };
         case 'SET_START_DATE':
-            return{
+            return {
                 ...state,
-                startDate:((action.startDate)?action.startDate:undefined)
+                startDate: ((action.startDate) ? action.startDate : undefined)
             };
         case 'SET_END_DATE':
-            return{
+            return {
                 ...state,
-                endDate:((action.endDate)?action.endDate:undefined)
-            };    
+                endDate: ((action.endDate) ? action.endDate : undefined)
+            };
         default:
             return state;
     }
